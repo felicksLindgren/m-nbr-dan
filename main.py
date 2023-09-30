@@ -4,6 +4,7 @@ import azure.cosmos.exceptions as exceptions
 from azure.cosmos.partition_key import PartitionKey
 import requests
 import config
+import logging
 
 HOST = config.settings['host']
 MASTER_KEY = config.settings['master_key']
@@ -45,7 +46,7 @@ def populate_database(container, token):
     index = 0
 
     while True:
-        print(f'Fetching problems from index {index}')
+        logging.info(f'Fetching problems from index {index}')
         problems = fetch_problems(token, index)
 
         if len(problems) == 0:
@@ -58,19 +59,22 @@ def populate_database(container, token):
         index = problems[-1]['apiId']
 
 def start_import():
-    client = cosmos_client.CosmosClient(
-        HOST,
-        { 'masterKey': MASTER_KEY },
-        user_agent="CosmosDBPythonQuickstart",
-        user_agent_overwrite=True
-    )
+    logging.info('Starting import of problems')
+
+    client = cosmos_client.CosmosClient(HOST, {'masterKey': MASTER_KEY}, user_agent="CosmosDBPythonQuickstart", user_agent_overwrite=True)
+    logging.info('Connected to CosmosDB')
 
     db = client.create_database_if_not_exists(id=DATABASE_ID)
+    logging.info(f'Created database {DATABASE_ID}')
+
     container = db.create_container_if_not_exists(
         id=CONTAINER_ID, 
-        partition_key=PartitionKey(path="/grade"),
-        offer_throughput=400
+        partition_key=PartitionKey(path="/grade")
     )
+    logging.info(f'Created container {CONTAINER_ID}')
 
     token = fetch_token()
+    logging.info('Fetched token')
+
     populate_database(container, token)
+    logging.info('Finished import of problems')
