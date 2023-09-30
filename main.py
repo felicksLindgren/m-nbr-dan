@@ -46,6 +46,7 @@ def populate_database(container, token):
     index = 0
 
     while True:
+        print(f'Fetching problems from index {index}')
         logging.info(f'Fetching problems from index {index}')
         problems = fetch_problems(token, index)
 
@@ -73,8 +74,20 @@ def start_import():
     )
     logging.info(f'Created container {CONTAINER_ID}')
 
-    token = fetch_token()
-    logging.info('Fetched token')
+    # Count items in container
+    items = count_items_in_container(container)
+    print(f'Container {CONTAINER_ID} has {items} items')
 
-    populate_database(container, token)
-    logging.info('Finished import of problems')
+    # token = fetch_token()
+    # logging.info('Fetched token')
+
+    # populate_database(container, token)
+    # logging.info('Finished import of problems')
+
+def count_items_in_container(container):
+    query = "SELECT VALUE COUNT(c.name) FROM c"
+    items = list(container.query_items(query=query, enable_cross_partition_query=True))
+    return items[0]
+
+if __name__ == '__main__':
+    start_import()
