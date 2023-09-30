@@ -78,11 +78,11 @@ def start_import():
     items = count_items_in_container(container)
     print(f'Container {CONTAINER_ID} has {items} items')
 
-    # token = fetch_token()
-    # logging.info('Fetched token')
+    token = fetch_token()
+    logging.info('Fetched token')
 
-    # populate_database(container, token)
-    # logging.info('Finished import of problems')
+    populate_database(container, token)
+    logging.info('Finished import of problems')
 
 def count_items_in_container(container):
     query = "SELECT VALUE COUNT(c.name) FROM c"
