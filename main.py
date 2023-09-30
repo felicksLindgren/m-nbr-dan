@@ -68,7 +68,8 @@ def start_import():
     db = client.create_database_if_not_exists(id=DATABASE_ID)
     container = db.create_container_if_not_exists(
         id=CONTAINER_ID, 
-        partition_key=PartitionKey(path="/grade")
+        partition_key=PartitionKey(path="/grade"),
+        offer_throughput=400
     )
 
     token = fetch_token()
