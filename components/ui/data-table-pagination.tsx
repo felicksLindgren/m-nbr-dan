@@ -33,8 +33,8 @@ import {
             <p className="text-sm font-medium">Rows per page</p>
             <Select
               value={`${table.getState().pagination.pageSize}`}
-              onValueChange={(value: number) => {
-                table.setPageSize(value)
+              onValueChange={(value: string) => {
+                table.setPageSize(Number(value))
               }}
             >
               <SelectTrigger className="h-8 w-[70px]">
