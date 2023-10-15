@@ -7,6 +7,9 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-6 p-12">
       <ModeToggle />
+      <Link href="/feed" passHref>
+        <Button variant="link">Browse feed</Button>
+      </Link>
       <Link href="/problems" passHref>
         <Button variant="link">Browse problems</Button>
       </Link>
