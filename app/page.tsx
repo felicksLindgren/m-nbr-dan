@@ -9,7 +9,7 @@ export default async function Home() {
   const { resources: problems } = await cosmos.container.items.query<Problem>(QUERY).fetchAll();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-12">
+    <main className="flex min-h-screen flex-col items-center gap-6 p-12">
       {/* <ModeToggle /> */}
       <DataTable columns={Columns} data={problems} />
     </main>
