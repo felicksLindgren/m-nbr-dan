@@ -20,7 +20,7 @@ export default function InfiniteScroll({ children, increment = 5 }: InfiniteScro
                     push(`?size=${children.length + increment}`, { scroll: false });
                 }
             },
-            { rootMargin: "228px" }
+            { rootMargin: "164px" }
         );
 
         if (ref.current) {

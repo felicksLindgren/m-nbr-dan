@@ -10,7 +10,7 @@ type PageProps = {
 }
 
 export default async function Feed({ searchParams }: PageProps) {
-  const size = searchParams["size"] || 5;
+  const size = searchParams["size"] || 10;
   const QUERY = `SELECT TOP ${size} * FROM c ORDER BY c.repeats DESC`;
   const { resources: problems } = await cosmos.container.items.query<Problem>(QUERY).fetchAll();
 
