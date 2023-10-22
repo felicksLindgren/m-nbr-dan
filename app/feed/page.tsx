@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import cosmos from "@/lib/cosmos"
+import { Problem } from "@/types"
 import { MoreHorizontalIcon } from "lucide-react"
 
 type PageProps = {
