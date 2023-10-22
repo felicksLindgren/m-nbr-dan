@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import cosmos from "@/lib/cosmos"
 import { Problem } from "@/types"
-import { MoreHorizontalIcon } from "lucide-react"
+import { ArrowLeftIcon, MoreHorizontalIcon } from "lucide-react"
+import Link from "next/link"
 
 type PageProps = {
   searchParams: URLSearchParams
@@ -17,6 +18,15 @@ export default async function Feed({ searchParams }: PageProps) {
 
   return (
     <main className="flex min-h-screen flex-col items-start">
+      <div className="flex items-center justify-between w-full p-4 bg-muted">
+        <h1 className="text-2xl font-bold">Feed</h1>
+        <Link href="/" passHref>
+          <Button variant="outline" size="icon">
+            <ArrowLeftIcon />
+          </Button>
+        </Link>
+
+      </div>
       <InfiniteScroll>
         {problems.map((problem) => (
           <Sheet key={problem.id}>
@@ -26,11 +36,11 @@ export default async function Feed({ searchParams }: PageProps) {
                 <CardDescription>{problem.grade} set by {problem.setby} with {problem.repeats} repeats</CardDescription>
               </CardHeader>
               <CardContent className="flex justify-end">
-                  <SheetTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <MoreHorizontalIcon />
-                    </Button>
-                  </SheetTrigger>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <MoreHorizontalIcon />
+                  </Button>
+                </SheetTrigger>
               </CardContent>
             </Card>
             <SheetContent className="w-[80%] sm:w-[80%]">
