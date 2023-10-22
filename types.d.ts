@@ -5,4 +5,12 @@ export type Problem = {
     setby: string;
     repeats: number;
     isBenchmark: boolean;
+    moves: Move[];
+    userRating: number;
+}
+
+type Move = {
+    description: string;
+    isStart: boolean;
+    isEnd: boolean;
 }
