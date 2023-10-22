@@ -1,7 +1,7 @@
 "use client"
 
 import { DropdownMenuTrigger } from "./dropdown-menu"
-import { FlipHorizontalIcon, Settings2Icon } from "lucide-react"
+import { Settings2Icon } from "lucide-react"
 import { Table } from "@tanstack/react-table"
 
 import { Button } from "./button"
