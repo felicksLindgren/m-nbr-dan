@@ -6,14 +6,14 @@ type BoardProps = {
 }
 
 const COLUMNS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
-const ROWS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+const ROWS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].reverse();
 
 export default function Board({ moves }: BoardProps) {
 
 
     return (
         <div className="grid gap-1 bg-muted">
-            {ROWS.reverse().map((row) => (
+            {ROWS.map((row) => (
                 <div key={row} className="flex justify-center items-center">
                     {COLUMNS.map((column) => {
                         const selected = moves.find((move) => move.description === `${column}${row}`);
