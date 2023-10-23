@@ -1,4 +1,4 @@
-import { Move, Problem } from "@/types"
+import { Problem } from "@/types"
 import Image from "next/image";
 
 type BoardProps = {
