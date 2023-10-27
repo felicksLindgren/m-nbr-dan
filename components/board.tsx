@@ -46,7 +46,7 @@ export default function Board({ moves }: BoardProps) {
 
                         if (!src) return (
                             <div key={column} className="w-[30px] h-[30px] flex justify-center items-center">
-                                <div className="w-1 h-1 bg-black rounded-full"></div>
+                                <div className="w-0.5 h-0.5 bg-black rounded-full"></div>
                             </div>
                         )
 
