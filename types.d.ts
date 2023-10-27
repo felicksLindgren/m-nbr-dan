@@ -14,3 +14,15 @@ type Move = {
     isStart: boolean;
     isEnd: boolean;
 }
+
+type Hold = {
+    Number: string
+    Location: {
+        Rotation: number
+        Description: string
+    }
+}
+
+type Holdset = {
+    Holds: Hold[]
+}
